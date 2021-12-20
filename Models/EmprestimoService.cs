@@ -10,9 +10,9 @@ namespace Biblioteca.Models
         {
             using(BibliotecaContext bc = new BibliotecaContext())
             {
-                 bc.Livros
-                    .Where(l =>  !(bc.Emprestimos.Where(e => e.Devolvido == true).Select(e => e.LivroId).Contains(l.Id)) )
-                    .ToList();
+                bc.Livros
+                .Where(l =>  !(bc.Emprestimos.Where(e => e.Devolvido == true).Select(e => e.LivroId).Contains(l.Id)) )
+                .ToList();
   
             }
         }
