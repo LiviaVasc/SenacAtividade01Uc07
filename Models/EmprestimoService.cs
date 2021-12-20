@@ -10,8 +10,10 @@ namespace Biblioteca.Models
         {
             using(BibliotecaContext bc = new BibliotecaContext())
             {
-                bc.Emprestimos.Add(e);
-                bc.SaveChanges();
+                 bc.Livros
+                    .Where(l =>  !(bc.Emprestimos.Where(e => e.Devolvido == true).Select(e => e.LivroId).Contains(l.Id)) )
+                    .ToList();
+  
             }
         }
 
@@ -43,10 +45,6 @@ namespace Biblioteca.Models
                     {
                         case "Usuário":
                             query = bc.Emprestimos.Where(l => l.NomeUsuario.Contains(filtro.Filtro));
-                        break;
-
-                        case "Telefone":
-                            query = bc.Emprestimos.Where(l => l.Telefone.Contains(filtro.Filtro));
                         break;
 
                         default:
