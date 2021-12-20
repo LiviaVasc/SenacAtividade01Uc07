@@ -15,7 +15,7 @@
         <div class="form-group mb-2 mx-sm-3">
             <input type="text" placeholder="Filtro" name="Filtro" class="form-control" />
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+        <button type="submit" class="btn btn-primary mb-2" onclick="~/wwwroot/js/livros.js">Pesquisar</button>
     </form>
     </div>
 </div>
@@ -28,8 +28,7 @@
                 <th>Usuario</th>
                 <th>Data Empréstimo</th>
                 <th>Data Devolução</th>
-                <th>Livro</th>
-                <th>Autor</th>
+                <th>Livro(ID)</th>
                 <th></th>
                 </tr>
             </thead>
@@ -41,8 +40,7 @@
                     <td>@e.NomeUsuario</td>
                     <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
                     <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
-                    <td>@e.Livro.Titulo</td>
-                    <td>@e.Livro.Autor</td>
+                    <td>@e.LivroId</td>
                     <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
                 </tr>
                 }
