@@ -1,6 +1,13 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Biblioteca.Models
 {
@@ -29,6 +36,7 @@ namespace Biblioteca.Models
 
         public ICollection<Livro> ListarTodos(FiltrosLivros filtro = null)
         {
+
             using(BibliotecaContext bc = new BibliotecaContext())
             {
                 IQueryable<Livro> query;
@@ -54,7 +62,9 @@ namespace Biblioteca.Models
                 else
                 {
                     // caso filtro não tenha sido informado
-                    query = bc.Livros;
+                    query = bc.Livros; 
+                    
+                    
                 }
                 
                 //ordenação padrão
